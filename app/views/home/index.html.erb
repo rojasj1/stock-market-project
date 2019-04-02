@@ -1,2 +1,23 @@
-<h1>Stock Market</h1>
-<p>Welcome</p>
+<%= form_tag root_path, :method => 'POST' do %>
+    <%=text_field_tag 'id',nil, placeholder:'Enter Company Ticket Symbol', size: 50%>
+    <%=submit_tag 'Look Up stocks'%>
+<% end %>
+
+
+<br/><br/>
+
+<%if @stock%>
+    <strong>Company Name: </strong><%= @stock.company_name %> - <%= @stock.symbol %><br/>
+    <strong>Current Ask: </strong><%= @stock.iex_ask_price %><br/>
+    <strong>Real Time Price: </strong><%= @stock.iex_realtime_price %><br/>
+    <strong>Calculation Price: </strong><%= @stock.calculation_price %><br/>
+    <strong>Price/Earning Ratio: </strong><%= @stock.pe_ratio %><br/>
+     <strong>Market Cap: </strong><%= @stock.market_cap %><br/>
+     <strong>Stock Open: </strong><%= @stock.open %><br/>
+     <strong>Stock Close: </strong><%= @stock.close %><br/>
+     <strong>Day's Range: </strong><%= @stock.high %> - <%= @stock.low %><br/>
+     <strong>Year High: </strong><%= @stock.week52_high %><br/>
+     <strong>Year Low: </strong><%= @stock.week52_low %><br/>
+<% elsif @nothing %>
+    <%= @nothing %>
+<% end %>
