@@ -1,6 +1,7 @@
 class StocksController < ApplicationController
   before_action :set_stock, only: [:show, :edit, :update, :destroy]
-
+  before_action :correct_user, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user!
   # GET /stocks
   # GET /stocks.json
   def index
@@ -70,5 +71,10 @@ class StocksController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def stock_params
       params.require(:stock).permit(:ticker, :user_id)
+    end
+    
+    def correct_user
+      @ticker = correct_user.stocks.find_by(id:params[:id])
+      redirect_to stocks_path, notice: "You are not authorized to edit this stock" if @stock.nil?
     end
 end
