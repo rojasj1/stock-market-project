@@ -13,6 +13,8 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'bootstrap-sass', '~> 3.4', '>= 3.4.1'
 gem 'stock_quote', '~> 2.0'
 gem 'devise', '~> 4.6', '>= 4.6.2'
+gem 'aylien_news_api', :git => 'https://github.com/AYLIEN/aylien_newsapi_ruby.git'
+gem 'json'
 
 group :development, :test do
   gem 'byebug'

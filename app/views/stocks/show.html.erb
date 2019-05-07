@@ -1,14 +1,61 @@
+<html>
+<head>
+    <title>Stock Info Page</title>
+    <style type ="text/css">
+        body{
+            background-image:url(https://www.track2realty.track2media.com/wp-content/uploads/2018/01/Market-Depth-Stocks.jpg);
+            background-size: cover;
+            background-attachment:fixed;
+        }
+        .content{
+            background:white;
+            width:50%;
+            padding:40px;
+            margin:100px auto;
+            font-family: calibri;
+            
+        }
+        p1{
+            font-size:25px;
+            color:black;
+        }
+         p2{
+            font-size:25px;
+            color:black;
+        }
+    </style>
+ <body>
+ <p1>   
+     <div class="content">
+<% begin %>
+         <% @stock_quote = StockQuote::Stock.quote(@stock.ticker) %>
+         <% rescue StandardError %>
+         no error here
+<% end %>
+</p1>
+<p2><div class="panel panel-default">
+  <div class="panel-heading">
+    <h3 class="panel-title"><strong><%= @stock_quote.company_name %> - <%= @stock_quote.symbol %></strong></h3>
+  </div>
+  <div class="panel-body">
+   <h1>Current Ask:$ <%=@stock_quote.iex_ask_price %></h1><br/><br/>
+    
+    <strong>Current Ask:$ </strong><%= @stock_quote.iex_ask_price %><br/><br/>
+    <strong>Calculation Price:$ </strong><%= @stock_quote.calculation_price %><br/><br/>
+    <strong>Price/Earning Ratio:$ </strong><%= @stock_quote.pe_ratio %><br/><br/>
+     <strong>Market Cap:$ </strong><%= @stock_quote.market_cap %><br/><br/>
+     <strong>Stock Open:$ </strong><%= @stock_quote.open %><br/><br/>
+     <strong>Stock Close:$ </strong><%= @stock_quote.close %><br/><br/>
+     <strong>Day's Range:$ </strong><%= @stock_quote.high %> - $<%= @stock_quote.low %><br/><br/>
+     <strong>Year High:$ </strong><%= @stock_quote.week52_high %><br/><br/>
+     <strong>Year Low:$ </strong><%=@stock_quote.week52_low %><br/><br/>
+     <br></br>
+  </div>
 
+  <div class="panel-footer"><%= link_to 'Edit', edit_stock_path(@stock),class:"btn btn-warning" %> 
+<%= link_to 'Destroy', stock_path(@stock), method: :delete, data: { confirm: 'Are you sure?' },class:"btn btn-danger " %>
+<%= link_to 'Back', stocks_path,class:"btn btn-success" %></div>
+</div>
+</div>
+</p2>
 
-<p>
-  <strong>Ticker:</strong>
-  <%= @stock.ticker %>
-</p>
-
-<p>
-  <strong>User:</strong>
-  <%= @stock.user_id %>
-</p>
-
-<%= link_to 'Edit', edit_stock_path(@stock) %> |
-<%= link_to 'Back', stocks_path %>

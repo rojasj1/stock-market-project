@@ -1,0 +1,56 @@
+<html>
+<head>
+    <title>Home Page</title>
+    <style type ="text/css">
+        body{
+            background-image:url(https://www.investmentexecutive.com/wp-content/uploads/sites/3/2018/08/800x600-blockchain-fintech-monsitj-75805586.jpg);
+            background-size: cover;
+            background-attachment:fixed;
+        }
+        .content{
+            background:white;
+            width:50%;
+            padding:40px;
+            margin:100px auto;
+            font-family: calibri;
+            
+        }
+        h1{
+            font-size:25px;
+            color:black;
+        }
+         h2{
+            font-size:25px;
+            color:black;
+        }
+    </style>
+ <body>
+ <p1>   
+     <div class="content">
+<h1> News Page! </h1>
+<br>
+<h2><strong> Google Article of the day </strong></h2>
+    <br>
+    <strong> Title: </strong><%= @googlTitle %>
+        <br> <br>
+    <strong> Body: </strong>  <%= @googlBody %>
+        <br> <br>
+    <strong> Source: </strong>  <%= @googlSource %> 
+  <br> <br>
+<h2><strong> Amazon Article of the day </strong></h2>
+    <br> 
+    <strong> Title: </strong> <%= @amznTitle %> 
+        <br> <br>
+    <strong> Body: </strong>  <%= @amznBody %>
+    <br> <br>
+  <strong> Source: </strong>  <%= @amznSource %> 
+  
+  <br> <br>
+<h2><strong> Apple Article of the day </strong></h2>
+    <br> 
+    <strong> Title: </strong> <%= @aaplTitle %> 
+        <br> <br>
+    <strong> Body: </strong>  <%= @aaplBody %>
+        <br> <br>
+    <strong> Source: </strong>  <%= @aaplSource %>   
+ 

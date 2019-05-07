@@ -1,27 +1,69 @@
-<%= form_tag root_path, :method => 'POST' do %>
-    <%=text_field_tag 'id',nil, placeholder:'Enter Company Ticket Symbol', size: 50%>
-    <%=submit_tag 'Look Up stocks'%>
-<% end %>
 
 
-<br/><br/>
-
-<%if @stock%>
-    <strong>Company Name: </strong><%= @stock.company_name %> - <%= @stock.symbol %><br/>
-    <strong>Current Ask: </strong><%= @stock.iex_ask_price %><br/>
-    <strong>Real Time Price: </strong><%= @stock.iex_realtime_price %><br/>
-    <strong>Calculation Price: </strong><%= @stock.calculation_price %><br/>
-    <strong>Price/Earning Ratio: </strong><%= @stock.pe_ratio %><br/>
-     <strong>Market Cap: </strong><%= @stock.market_cap %><br/>
-     <strong>Stock Open: </strong><%= @stock.open %><br/>
-     <strong>Stock Close: </strong><%= @stock.close %><br/>
-     <strong>Day's Range: </strong><%= @stock.high %> - <%= @stock.low %><br/>
-     <strong>Year High: </strong><%= @stock.week52_high %><br/>
-     <strong>Year Low: </strong><%= @stock.week52_low %><br/>
+<html>
+<head>
+    <title>Home Page</title>
+    <style type ="text/css">
+        body{
+            background-image:url(https://www.track2realty.track2media.com/wp-content/uploads/2018/01/Market-Depth-Stocks.jpg);
+            background-size: cover;
+            background-attachment:fixed;
+        }
+        .content{
+            background:white;
+            width:50%;
+            padding:40px;
+            margin:100px auto;
+            font-family: calibri;
+            
+        }
+        p1{
+            font-size:25px;
+            color:black;
+        }
+         p2{
+            font-size:25px;
+            color:black;
+        }
+    </style>
+ <body>
+ <p1>   
+     <div class="content">
+      <%= form_tag root_path, :method => 'POST' do %>
+    <%=text_field_tag 'id',nil, placeholder:'Enter Company Ticket Symbol',size: 30%>
+    <%=submit_tag 'Look Up stocks',class:"btn btn-primary"%><br/><br/>
+<% end %>   
+ </p1>
+ 
+ <p2>
+ <%if @stock%>
+    <li><strong>Company Name:</strong><%= @stock.company_name %> <br/><br/></li>
+    <li><strong>Company Ticker Symbol:</strong><%= @stock.symbol %><br/><br/></li>
+   <li> <strong>Current Ask: $</strong><%= @stock.iex_ask_price %><br/><br/></li>
+   <li><strong>Real Time Price: $</strong><%= @stock.iex_realtime_price %><br/><br/></li>
+   <li> <strong>Calculation Price: $</strong><%= @stock.calculation_price %><br/><br/></li>
+   <li> <strong>Price/Earning Ratio: $</strong><%= @stock.pe_ratio %><br/><br/></li>
+   <li>  <strong>Market Cap: $</strong><%= @stock.market_cap %><br/><br/></li>
+   <li>  <strong>Stock Open: $</strong><%= @stock.open %><br/><br/></li>
+   <li>  <strong>Stock Close: $</strong><%= @stock.close %><br/><br/></li>
+    <li> <strong>Day's Range: $</strong><%= @stock.high %> - $<%= @stock.low %><br/><br/></li>
+   <li>  <strong>Year High: $</strong><%= @stock.week52_high %><br/><br/></li>
+    <li> <strong>Year Low: $</strong><%= @stock.week52_low %><br/><br/></li>
 <% elsif @nothing %>
     <%= @nothing %>
 <% end %>
 
 <% if @error  %>
     <%= @error %>
-<% end %>    
+<% end %>   
+</p2>
+     </div>
+     
+ </body>  
+</head>    
+    
+    
+
+</html>
+<br/><br/>
+
